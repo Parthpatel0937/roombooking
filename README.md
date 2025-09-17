@@ -26,7 +26,7 @@ A Spring Boot REST API for managing room bookings, built with **PostgreSQL** and
 
 ### 1️⃣ Clone the Repository
 
-git clone https://github.com/your-username/roombooking.git
+git clone https://github.com/Parthpatel0937/roombooking.git
 cd roombooking
 
 
