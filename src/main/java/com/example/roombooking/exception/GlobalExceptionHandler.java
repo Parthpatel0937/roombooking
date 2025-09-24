@@ -16,6 +16,8 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> handleAll(Exception ex) {
+       // return ResponseEntity.status(500).body(Map.of("timestamp", Instant.now(), "message", "The role is invalid"));
         return ResponseEntity.status(500).body(Map.of("timestamp", Instant.now(), "message", ex.getMessage()));
+
     }
 }

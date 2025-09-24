@@ -27,12 +27,12 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         if (header != null && header.startsWith("Bearer ")) {
             String token = header.substring(7);
             if (jwtUtils.validateToken(token)) {
-                String username = jwtUtils.getUsernameFromToken(token);
-                UserDetails ud = userDetailsService.loadUserByUsername(username);
-                var auth = new UsernamePasswordAuthenticationToken(ud, null, ud.getAuthorities());
-                SecurityContextHolder.getContext().setAuthentication(auth);
+                String username = jwtUtils.getUsernameFromToken(token);                 // get username from token
+                UserDetails ud = userDetailsService.loadUserByUsername(username);               // get user details from DB using AppUserDetailsService class
+                var auth = new UsernamePasswordAuthenticationToken(ud, null, ud.getAuthorities());      // create spring security authentication object
+                SecurityContextHolder.getContext().setAuthentication(auth);    // Places in the security context holder, so downstream controllers know the user is authenticated
             }
         }
-        filterChain.doFilter(request, response);
+        filterChain.doFilter(request, response); // Passes the request down the chain to next filters
     }
 }
